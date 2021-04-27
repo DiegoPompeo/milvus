@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <table class="table" *ngIf="lista">
+        <thead>
+            <th>Nome</th>
+            <th>CPF/CNPJ</th>
+            <th>E-mail</th>
+            <th>Status</th>
+            <th>Endereco</th>
+            <th>Celular</th>
+            <th>Acoes</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of lista">
+                <td>{{user.nome}}</td>
+                <td>{{user.cpf}}</td>
+                <td>{{user.email}}</td>
+                <td>
+                    <div *ngIf="user.ativo" class="ativo">
+                        <p>Sim</p>
+                    </div>
+                    <div *ngIf="!user.ativo" class="inativo">
+                        <p>Nao</p>
+                    </div>
+                </td>
+                <td>{{user.endereco}}</td>
+                <td>{{user.celular}}</td>
+                <td>
+                    <button mat-icon-button [matMenuTriggerFor]="menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item class="editar" (click)="editar(user.id)">
+                            <mat-icon>update</mat-icon>
+                            <span>Editar</span>
+                        </button>
+                        <button mat-menu-item class="excluir">
+                            <mat-icon>remove_circle_outline</mat-icon>
+                            <span>Excluir</span>
+                        </button>
+                        <button mat-menu-item>
+                            <mat-icon>remove_circle_outline</mat-icon>
+                            <span>Disable alerts</span>
+                        </button>
+                    </mat-menu>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
