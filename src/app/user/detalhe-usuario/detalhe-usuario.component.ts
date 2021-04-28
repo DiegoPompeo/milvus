@@ -1,13 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CrudService } from '../service/crud.service';
 
 @Component({
-  selector: 'app-atualizar',
-  templateUrl: './atualizar.component.html',
-  styleUrls: ['./atualizar.component.scss']
+  selector: 'app-detalhe-usuario',
+  templateUrl: './detalhe-usuario.component.html',
+  styleUrls: ['./detalhe-usuario.component.scss']
 })
-export class AtualizarComponent implements OnInit {
+export class DetalheUsuarioComponent implements OnInit {
 
   public userId;
 
@@ -37,5 +37,4 @@ export class AtualizarComponent implements OnInit {
       }
     );
   }
-
 }

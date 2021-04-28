@@ -8,9 +8,10 @@ import { CriarComponent } from './criar/criar.component';
 import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
 import { AtualizarComponent } from './atualizar/atualizar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DetalheUsuarioComponent } from './detalhe-usuario/detalhe-usuario.component';
 
 @NgModule({
-  declarations: [CriarComponent, ListaUsuariosComponent, AtualizarComponent],
+  declarations: [CriarComponent, ListaUsuariosComponent, AtualizarComponent, DetalheUsuarioComponent],
   imports: [
     CommonModule,
     BrowserModule,

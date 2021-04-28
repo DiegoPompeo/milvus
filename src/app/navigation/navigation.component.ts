@@ -12,6 +12,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   dropdownVisible: boolean = false;
   @ViewChild('dashboard') dashboard: ElementRef<HTMLAnchorElement>;
   @ViewChild('api') api: ElementRef<HTMLAnchorElement>;
+  @ViewChild('listagem') listagem: ElementRef<HTMLAnchorElement>;
 
   constructor(
     private route: Router,
@@ -29,15 +30,23 @@ export class NavigationComponent implements OnInit, AfterViewInit {
       case '/main/dashboard':
         this.dashboard['_element'].nativeElement.classList.add('actual-page');
         this.api['_element'].nativeElement.classList.remove('actual-page');
+        this.listagem['_element'].nativeElement.classList.remove('actual-page');
         break;
       case '/main/api-e-exemplos':
-        this.api['_element'].nativeElement.classList.add('actual-page');
         this.dashboard['_element'].nativeElement.classList.remove('actual-page');
+        this.api['_element'].nativeElement.classList.add('actual-page');
+        this.listagem['_element'].nativeElement.classList.remove('actual-page');
         break;
       case '/main/listagem':
-        this.api['_element'].nativeElement.classList.add('actual-page');
         this.dashboard['_element'].nativeElement.classList.remove('actual-page');
+        this.api['_element'].nativeElement.classList.remove('actual-page');
+        this.listagem['_element'].nativeElement.classList.add('actual-page');
         break;
+      case '/main/detalhe-usuario':
+          this.dashboard['_element'].nativeElement.classList.remove('actual-page');
+          this.api['_element'].nativeElement.classList.remove('actual-page');
+          this.listagem['_element'].nativeElement.classList.remove('actual-page');
+          break;
     }
   }
 

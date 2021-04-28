@@ -10,8 +10,6 @@ import { CrudService } from '../service/crud.service';
 })
 export class ListaUsuariosComponent implements OnInit {
   
-  userEdit: any;
-
   lista: any;
 
   constructor(private listaService: CrudService, private router: Router) { }
@@ -28,14 +26,12 @@ export class ListaUsuariosComponent implements OnInit {
     )
   }
 
-  editar(id: any){
-    this.listaService.getUser(id).subscribe(
-      data => {
-        this.userEdit = data;
-      }
-    );
-    this.router.navigateByUrl("user/editar");
-  
+  detalheUsuario(id: any){
+    this.router.navigate(['main/detalhe-usuario', id]);
+  }
+
+  editarUsuario(id: any){
+    this.router.navigate(['main/editar', id]);
   }
 
 }

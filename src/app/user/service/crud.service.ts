@@ -7,7 +7,7 @@ import { Observable, Subject } from 'rxjs';
 })
 export class CrudService {
 
-  private token = 'lzMma3zQepNFsPwEmxrsM8hQDmyjNalNfDphTpk3'
+  private token = 'lzMma3zQepNFsPwEmxrsM8hQDmyjNalNfDphTpk3';
 
   private header = new HttpHeaders().set("Authorization", this.token);
 
@@ -17,12 +17,6 @@ export class CrudService {
 
   constructor(private http: HttpClient) { }
 
-  getUser(id: any): Observable<any> {
-    return this.http.get(this.url + "/" + id, {
-      headers: this.header
-    });
-  }
-
   getUsers(): Observable<any> {
     return this.http.get(this.url, {
       headers: this.header
@@ -30,15 +24,21 @@ export class CrudService {
   }
 
   createUser(): Observable<any> {
-    return this.http.post<any>(this.url, null);
+    return this.http.post<any>(this.url, {
+      headers: this.header
+    });
   }
 
   updateUser(id: string): Observable<any> {
-    return this.http.put<any>(this.url + id, null);
+    return this.http.put<any>(this.url + "/" + id, {
+      headers: this.header
+    });
   }
 
   deleteUser(id: string): Observable<any> {
-    return this.http.delete<any>(this.url + id);
+    return this.http.delete<any>(this.url + "/" + id, {
+      headers: this.header
+    });
   }
   
 }

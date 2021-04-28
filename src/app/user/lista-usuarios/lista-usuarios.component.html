@@ -29,17 +29,17 @@
                         <mat-icon>more_vert</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu">
-                        <button mat-menu-item class="editar" (click)="editar(user.id)">
+                        <button mat-menu-item (click)="editarUsuario(user._id)">
                             <mat-icon>update</mat-icon>
                             <span>Editar</span>
                         </button>
-                        <button mat-menu-item class="excluir">
+                        <button mat-menu-item>
                             <mat-icon>remove_circle_outline</mat-icon>
                             <span>Excluir</span>
                         </button>
-                        <button mat-menu-item>
+                        <button mat-menu-item (click)="detalheUsuario(user._id)">
                             <mat-icon>remove_circle_outline</mat-icon>
-                            <span>Disable alerts</span>
+                            <span>Detalhes</span>
                         </button>
                     </mat-menu>
                 </td>
