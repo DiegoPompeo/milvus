@@ -4,6 +4,7 @@
     text-align: center;
     border-radius: 5%;
     font-weight: bold;
+    width: 40px;
 }
 
 .inativo {
@@ -12,16 +13,5 @@
     text-align: center;
     border-radius: 5%;
     font-weight: bold;
-}
-
-.editar {
-    color: white;
-    background-color: rgb(0, 60, 255);
-    font-weight: bold;
-}
-
-.excluir {
-    color: white;
-    background-color: red;
-    font-weight: bold;
+    width: 40px;
 }

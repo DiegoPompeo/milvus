@@ -1,7 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { AtualizarComponent } from '../atualizar/atualizar.component';
+import { DetalheUsuarioComponent } from '../detalhe-usuario/detalhe-usuario.component';
 import { CrudService } from '../service/crud.service';
+
+export interface Tile {
+  cols: number;
+  rows: number;
+  text: string;
+}
 
 @Component({
   selector: 'app-lista-usuarios',
@@ -9,8 +16,22 @@ import { CrudService } from '../service/crud.service';
   styleUrls: ['./lista-usuarios.component.scss']
 })
 export class ListaUsuariosComponent implements OnInit {
+
+  displayedColumns: string[] = ['name', 'cpf', 'email', 'status', 'home', 'phone', 'actions'];
+
+  dataSource: any;
+
+  user: any;
+
+  dropdownVisible: boolean = false;
+
   
-  lista: any;
+  @ViewChild(AtualizarComponent) atualizar: AtualizarComponent;
+
+  tile: Tile[] = [
+    { cols: 3, rows: 1, text: "Listagem de Clientes" },
+    { cols: 1, rows: 1, text: "Adicionar" },
+  ];
 
   constructor(private listaService: CrudService, private router: Router) { }
 
@@ -21,17 +42,17 @@ export class ListaUsuariosComponent implements OnInit {
   getUsers() {
     this.listaService.getUsers().subscribe(
       data => {
-        this.lista = data;
+        this.dataSource = data;
       }
     )
   }
 
-  detalheUsuario(id: any){
-    this.router.navigate(['main/detalhe-usuario', id]);
+  detalheUsuario(id: any) {
+    this.router.navigate(['main/listagem/detalhe-usuario', id]);
   }
 
-  editarUsuario(id: any){
-    this.router.navigate(['main/editar', id]);
+  editarUsuario(id: any) {
+    this.router.navigate(['main/listagem/editar', id]);
   }
 
 }

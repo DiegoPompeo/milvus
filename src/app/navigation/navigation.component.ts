@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { AtualizarComponent } from '../user/atualizar/atualizar.component';
 
 @Component({
   selector: 'app-navigation',
@@ -42,11 +43,6 @@ export class NavigationComponent implements OnInit, AfterViewInit {
         this.api['_element'].nativeElement.classList.remove('actual-page');
         this.listagem['_element'].nativeElement.classList.add('actual-page');
         break;
-      case '/main/detalhe-usuario':
-          this.dashboard['_element'].nativeElement.classList.remove('actual-page');
-          this.api['_element'].nativeElement.classList.remove('actual-page');
-          this.listagem['_element'].nativeElement.classList.remove('actual-page');
-          break;
     }
   }
 

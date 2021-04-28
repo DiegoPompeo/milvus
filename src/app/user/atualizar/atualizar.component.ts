@@ -33,7 +33,6 @@ export class AtualizarComponent implements OnInit {
             this.usuario = element;
           }
         });
-        console.log(this.usuario);
       }
     );
   }

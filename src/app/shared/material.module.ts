@@ -18,6 +18,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 
 @NgModule({
   imports: [
@@ -35,7 +38,10 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
       MatMenuModule,
       MatSelectModule,
       MatDialogModule,
-      MatButtonToggleModule
+      MatButtonToggleModule,
+      MatCardModule,
+      MatGridListModule,
+      
     ],
   exports: [
       CommonModule,
@@ -52,7 +58,9 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
       MatMenuModule,
       MatSelectModule,
       MatDialogModule,
-      MatButtonToggleModule
+      MatButtonToggleModule,
+      MatCardModule,
+      MatGridListModule,
     ]
 })
 export class CustomMaterialModule { }

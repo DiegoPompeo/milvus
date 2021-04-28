@@ -14,35 +14,69 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'main'
   },
-  { path: 'main', component: NavigationComponent,
-      children: [
-        { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-        {
-          path: 'dashboard',
-          component: DashboardComponent
+  {
+    path: 'main', component: NavigationComponent,
+    data: {
+      breadcrumb: 'Home'
+    },
+    children: [
+      {
+        path: '', redirectTo: 'dashboard', pathMatch: 'full',
+        data: {
+          breadcrumb: null
+        },
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        data: {
+          breadcrumb: null
+        },
+      },
+      {
+        path: 'api-e-exemplos',
+        component: ApiEExemplosComponent,
+        data: {
+          breadcrumb: null
+        },
+      },
+      {
+        path: 'criar',
+        component: CriarComponent,
+        data: {
+          breadcrumb: "Cadastro"
+        },
+      },
+      {
+        path: 'listagem',
+        data: {
+          breadcrumb: 'Lista'
+        },
+        children: [
+          {
+          path: '', component: ListaUsuariosComponent,
+          data: {
+            breadcrumb: null
+          },
         },
         {
-          path: 'api-e-exemplos',
-          component: ApiEExemplosComponent
+          path: 'editar/:id',
+          component: AtualizarComponent,
+          data: {
+            breadcrumb: "Atualizar"
+          },
         },
         {
-          path: 'listagem', 
-          component: ListaUsuariosComponent
-        },
-        {
-          path: 'editar/:id', 
-          component: AtualizarComponent
-        },
-        {
-          path: 'criar', 
-          component: CriarComponent
-        },
-        {
-          path: 'detalhe-usuario/:id', 
-          component: DetalheUsuarioComponent
+          path: 'detalhe-usuario/:id',
+          component: DetalheUsuarioComponent,
+          data: {
+            breadcrumb: "Detalhes"
+          },
         }
-      ]
-    }
+        ]
+      }
+    ]
+  }
 ];
 
 @NgModule({
@@ -50,3 +84,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+

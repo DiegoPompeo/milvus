@@ -10,6 +10,8 @@ import { AtualizarComponent } from './atualizar/atualizar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetalheUsuarioComponent } from './detalhe-usuario/detalhe-usuario.component';
 
+import { BreadcrumbModule } from "xng-breadcrumb";
+
 @NgModule({
   declarations: [CriarComponent, ListaUsuariosComponent, AtualizarComponent, DetalheUsuarioComponent],
   imports: [
@@ -18,7 +20,8 @@ import { DetalheUsuarioComponent } from './detalhe-usuario/detalhe-usuario.compo
     BrowserAnimationsModule,
     CustomMaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BreadcrumbModule,
   ],
   providers: [],
   bootstrap: []
