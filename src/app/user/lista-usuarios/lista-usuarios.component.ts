@@ -33,14 +33,14 @@ export class ListaUsuariosComponent implements OnInit {
     { cols: 1, rows: 1, text: "Adicionar" },
   ];
 
-  constructor(private listaService: CrudService, private router: Router) { }
+  constructor(private crudService: CrudService, private router: Router) { }
 
   ngOnInit(): void {
     this.getUsers();
   }
 
   getUsers() {
-    this.listaService.getUsers().subscribe(
+    this.crudService.getUsers().subscribe(
       data => {
         this.dataSource = data;
       }
@@ -53,6 +53,15 @@ export class ListaUsuariosComponent implements OnInit {
 
   editarUsuario(id: any) {
     this.router.navigate(['main/listagem/editar', id]);
+  }
+
+  goToCriar(){
+    this.router.navigateByUrl("main/criar")
+  }
+
+  deletarUsuario(id: any){
+    this.crudService.deleteUser(id).subscribe();
+    this.getUsers();
   }
 
 }

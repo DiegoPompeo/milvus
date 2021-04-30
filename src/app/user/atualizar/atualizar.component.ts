@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CrudService } from '../service/crud.service';
 
 @Component({
@@ -13,10 +14,15 @@ export class AtualizarComponent implements OnInit {
 
   usuario: any;
 
+  nome: string;
+
   listaUsuario: any;
 
-  constructor(private route: ActivatedRoute, private service: CrudService) {
-    this.route.params.subscribe(params => this.userId = params['id'])
+  constructor(private activateRoute: ActivatedRoute, 
+    private service: CrudService, 
+    private router: Router,
+    private toastr: ToastrService) {
+    this.activateRoute.params.subscribe(params => this.userId = params['id'])
   }
 
   ngOnInit(): void {
@@ -31,10 +37,27 @@ export class AtualizarComponent implements OnInit {
         this.listaUsuario.forEach(element => {
           if (element._id = this.userId) {
             this.usuario = element;
+            this.nome = this.usuario.nome;
           }
         });
       }
     );
+  }
+
+  editarUsuario(id: any) {
+    this.router.navigate(['main/listagem/editar', id]);
+  }
+
+  voltar() {
+    this.router.navigateByUrl("/main/listagem");
+  }
+
+  salvar(usuario: any){
+    this.service.updateUser(usuario._id, usuario).subscribe(
+      data => {
+        this.toastr.success("Atualizado com sucesso");
+      }
+    )
   }
 
 }

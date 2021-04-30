@@ -20,7 +20,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
-
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { NgxMaskModule } from "ngx-mask";
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   imports: [
@@ -41,7 +44,11 @@ import {MatGridListModule} from '@angular/material/grid-list';
       MatButtonToggleModule,
       MatCardModule,
       MatGridListModule,
-      
+      MatFormFieldModule,
+      MatInputModule,
+      NgxMaskModule.forChild(),
+      MatStepperModule,
+
     ],
   exports: [
       CommonModule,
@@ -61,6 +68,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
       MatButtonToggleModule,
       MatCardModule,
       MatGridListModule,
+      MatFormFieldModule,
+      MatInputModule,
+      MatStepperModule,
+      
     ]
 })
 export class CustomMaterialModule { }

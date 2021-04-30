@@ -29,8 +29,8 @@ export class DetalheUsuarioComponent implements OnInit {
 
   listaUsuario: any;
 
-  constructor(private route: ActivatedRoute, private service: CrudService, private router: Router) {
-    this.route.params.subscribe(params => this.userId = params['id'])
+  constructor(private activateRoute: ActivatedRoute, private service: CrudService, private router: Router) {
+    this.activateRoute.params.subscribe(params => this.userId = params['id'])
   }
 
   ngOnInit(): void {
@@ -58,5 +58,9 @@ export class DetalheUsuarioComponent implements OnInit {
 
   editarUsuario(id: any) {
     this.router.navigate(['main/listagem/editar', id]);
+  }
+
+  voltar() {
+    this.router.navigateByUrl("/main/listagem");
   }
 }

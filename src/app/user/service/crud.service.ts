@@ -23,14 +23,14 @@ export class CrudService {
     });
   }
 
-  createUser(): Observable<any> {
-    return this.http.post<any>(this.url, {
+  createUser(user: any): Observable<any> {
+    return this.http.post<any>(this.url, user, {
       headers: this.header
     });
   }
 
-  updateUser(id: string): Observable<any> {
-    return this.http.put<any>(this.url + "/" + id, {
+  updateUser(id: string, usuario: any): Observable<any> {
+    return this.http.put<any>(this.url + "/" + id, usuario, {
       headers: this.header
     });
   }

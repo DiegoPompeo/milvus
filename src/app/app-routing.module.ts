@@ -63,7 +63,7 @@ const routes: Routes = [
           path: 'editar/:id',
           component: AtualizarComponent,
           data: {
-            breadcrumb: "Atualizar"
+            breadcrumb: "Editar"
           },
         },
         {

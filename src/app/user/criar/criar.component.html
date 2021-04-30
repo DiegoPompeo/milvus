@@ -1,1 +1,198 @@
-<p>criar works!</p>
+<xng-breadcrumb [separator]="iconTemplate"></xng-breadcrumb>
+<ng-template #iconTemplate>
+    <mat-icon>chevron_right</mat-icon>
+</ng-template>
+
+<mat-grid-list cols="12" rowHeight="40px">
+    <mat-grid-tile [colspan]="3">
+        <span style="font-size: 20px;">Cadastro do cliente</span>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="7"></mat-grid-tile>
+    <mat-grid-tile [colspan]="2" style="font-size: 20px;">
+        <button mat-icon-button (click)="voltar()">
+            <span class="h5">VOLTAR</span>
+        </button>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<div class="container">
+    <form [formGroup]="registroFormGroup" (submit)="submit()">
+        <mat-tab-group>
+            <mat-tab label="Empresa">
+                <div class="container">
+                    <div class="row m-3">
+                        <mat-form-field class="form-field col-6" appearance="outline">
+                            <mat-label> CPF/CNPJ
+                            </mat-label>
+                            <input matInput formControlName="cpf_cnpj" mask="00.000.000/0000-00 || 000.000.000-00"
+                                required />
+                            <mat-error *ngIf="registroFormGroup.controls.cpf_cnpj.touched">
+                                <span *ngIf="registroFormGroup.controls.cpf_cnpj.errors?.required">
+                                    <i class="material-icons" style="font-size: 11px;">warning</i><span> Informe o
+                                        CPF/CNPJ.</span>
+                                </span>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="form-field col-12" appearance="outline">
+                            <mat-label> Nome do Cliente
+                            </mat-label>
+                            <input matInput formControlName="nome" type="text" placeholder="Nome do Cliente" required>
+                            <mat-error *ngIf="registroFormGroup.controls.nome.touched">
+                                <div *ngIf="registroFormGroup.controls.nome.errors?.required">
+                                    <i class="material-icons" style="font-size: 11px;">warning</i><span> Informe o nome do
+                                        Cliente. </span>
+                                </div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Endereco">
+                <div class="container">
+                    <div class="row m-3">
+                        <mat-form-field class="form-field col-4" appearance="outline">
+                            <mat-label> CEP
+                            </mat-label>
+                            <input matInput formControlName="cep" mask="00000-000" required />
+                            <mat-error *ngIf="registroFormGroup.controls.cep.touched">
+                                <span *ngIf="registroFormGroup.controls.cep.errors?.required">
+                                    <i class="material-icons" style="font-size: 11px;">warning</i><span> Informe o
+                                        CEP.</span>
+                                </span>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="form-field col-4" appearance="outline">
+                            <mat-label> Endereco
+                            </mat-label>
+                            <input matInput formControlName="endereco" type="text" placeholder="Endereco" required>
+                            <mat-error *ngIf="registroFormGroup.controls.endereco.touched">
+                                <div *ngIf="registroFormGroup.controls.endereco.errors?.required">
+                                    <i class="material-icons" style="font-size: 11px;">warning</i><span> Informe o endereco.
+                                    </span>
+                                </div>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="form-field col-4" appearance="outline">
+                            <mat-label> Numero do endereco
+                            </mat-label>
+                            <input matInput formControlName="numero" type="number" placeholder="Numero do endereco"
+                                required>
+                            <mat-error *ngIf="registroFormGroup.controls.numero.touched">
+                                <div *ngIf="registroFormGroup.controls.numero.errors?.required">
+                                    <i class="material-icons" style="font-size: 11px;">warning</i><span> Informe o numero do
+                                        endereco. </span>
+                                </div>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="form-field col-4" appearance="outline">
+                            <mat-label> Complemento
+                            </mat-label>
+                            <input matInput formControlName="complemento" type="text" placeholder="Complemento" required>
+                            <mat-error *ngIf="registroFormGroup.controls.complemento.touched">
+                                <div *ngIf="registroFormGroup.controls.complemento.errors?.required">
+                                    <i class="material-icons" style="font-size: 11px;">warning</i><span> Informe o
+                                        complemento. </span>
+                                </div>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="form-field col-4" appearance="outline">
+                            <mat-label> Bairro
+                            </mat-label>
+                            <input matInput formControlName="bairro" type="text" placeholder="Bairro" required>
+                            <mat-error *ngIf="registroFormGroup.controls.bairro.touched">
+                                <div *ngIf="registroFormGroup.controls.bairro.errors?.required">
+                                    <i class="material-icons" style="font-size: 11px;">warning</i><span> Informe o bairro.
+                                    </span>
+                                </div>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="form-field col-4" appearance="outline">
+                            <mat-label> Cidade
+                            </mat-label>
+                            <input matInput formControlName="cidade" type="text" placeholder="Cidade" required>
+                            <mat-error *ngIf="registroFormGroup.controls.cidade.touched">
+                                <div *ngIf="registroFormGroup.controls.cidade.errors?.required">
+                                    <i class="material-icons" style="font-size: 11px;">warning</i><span> Informe a cidade.
+                                    </span>
+                                </div>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="form-field col-4" appearance="outline">
+                            <mat-label> UF
+                            </mat-label>
+                            <input matInput formControlName="uf" type="text" placeholder="UF" required>
+                            <mat-error *ngIf="registroFormGroup.controls.uf.touched">
+                                <div *ngIf="registroFormGroup.controls.uf.errors?.required">
+                                    <i class="material-icons" style="font-size: 11px;">warning</i><span> Informe o estado.
+                                    </span>
+                                </div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Contato">
+                <div class="container">
+                    <div class="row m-3">
+                        <mat-form-field class="form-field col-6" appearance="outline">
+                            <mat-label> Telefone fixo
+                            </mat-label>
+                            <input matInput formControlName="telefone" type="text" mask="(00) 0000-0000" required>
+                            <mat-error *ngIf="registroFormGroup.controls.telefone.touched">
+                                <div *ngIf="registroFormGroup.controls.telefone.errors?.required">
+                                    <i class="material-icons" style="font-size: 11px;">warning</i><span> Informe o telefone
+                                        fixo. </span>
+                                </div>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="form-field col-6" appearance="outline">
+                            <mat-label> Telefone celular
+                            </mat-label>
+                            <input matInput formControlName="celular" type="text" mask="(00) 00000-0000 || (00) 0000-0000"
+                                required>
+                            <mat-error *ngIf="registroFormGroup.controls.telefone.touched">
+                                <div *ngIf="registroFormGroup.controls.telefone.errors?.required">
+                                    <i class="material-icons" style="font-size: 11px;">warning</i><span> Informe o telefone
+                                        fixo. </span>
+                                </div>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Conta">Conta</mat-tab>
+            <mat-tab label="Acesso">
+                <div class="container">
+                    <div class="row m-3">
+                        <mat-form-field class="form-field col-6" appearance="outline">
+                            <mat-label> Email
+                            </mat-label>
+                            <input matInput formControlName="email" type="email" placeholder="Email" required>
+                            <mat-error *ngIf="registroFormGroup.controls.email.touched">
+                                <div *ngIf="registroFormGroup.controls.email.errors?.required">
+                                    <i class="material-icons" style="font-size: 11px;">warning</i><span> Informe o email. </span>
+                                </div>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="form-field col-6" appearance="outline">
+                            <mat-label> Senha
+                            </mat-label>
+                            <input matInput formControlName="senha" type="password" required>
+                            <mat-error *ngIf="registroFormGroup.controls.senha.touched">
+                                <div *ngIf="registroFormGroup.controls.senha.errors?.required">
+                                    <i class="material-icons" style="font-size: 11px;">warning</i><span> Informe a senha. </span>
+                                </div>
+                            </mat-error>
+                        </mat-form-field>
+    
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Configuracoes"> Configuracoes </mat-tab>
+        </mat-tab-group>
+    
+        <hr>
+        <button class="btn btn-dark float-left" (click)="voltar()">CANCELAR CADASTRO</button>
+        <button class="btn btn-dark float-right" [disabled]="!registroFormGroup.valid">CONFIRMAR CADASTRO</button>
+    </form>
+</div>

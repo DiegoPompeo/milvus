@@ -1,6 +1,6 @@
 <xng-breadcrumb [separator]="iconTemplate"></xng-breadcrumb>
 <ng-template #iconTemplate>
-  <mat-icon>chevron_right</mat-icon>
+    <mat-icon>chevron_right</mat-icon>
 </ng-template>
 
 <mat-grid-list cols="12" rowHeight="40px">
@@ -9,14 +9,16 @@
     </mat-grid-tile>
     <mat-grid-tile [colspan]="8"></mat-grid-tile>
     <mat-grid-tile [colspan]="2">
-        <span style="font-size: 20px;">VOLTAR</span>
+        <button mat-icon-button (click)="voltar()">
+            <span class="h5">VOLTAR</span>
+        </button>
     </mat-grid-tile>
 </mat-grid-list>
 
-<mat-card class="container">
-    <mat-card-header>
-        <span class="col-10 h4">Empresa</span>
-        <div class="col-2">
+
+<div class="container">
+    <mat-card class="float-left w-100">
+        <div class="float-right">
             <button mat-icon-button [matMenuTriggerFor]="menu">
                 <mat-icon>more_vert</mat-icon>
             </button>
@@ -31,5 +33,58 @@
                 </button>
             </mat-menu>
         </div>
-    </mat-card-header>
-</mat-card>
+        <mat-card-header>
+            <label class="h4">Empresa</label>
+        </mat-card-header>    
+        <mat-card-content class="ml-4 container">
+            <label class="font-weight-bold">CNPJ/CPF</label>
+            <p>{{usuario?.cpf}}</p>
+            <label class="font-weight-bold">Nome</label>
+            <p>{{usuario?.nome}}</p>
+        </mat-card-content>
+
+        <mat-card-header>
+            <label class="h4">Endereco</label>
+        </mat-card-header>
+        <mat-card-content  class="ml-4 container">
+            <label class="font-weight-bold">CEP</label>
+            <p>{{usuario?.cep}}</p>
+            <label class="font-weight-bold">Endereco</label>
+            <p>{{usuario?.endereco}}</p>
+            <div class="row">
+                <div class="col-3">
+                    <label class="font-weight-bold">Complemento</label>
+                    <p>{{usuario?.complemento}}</p>
+                </div>
+                <div class="col-3">
+                    <label class="font-weight-bold">Bairro</label>
+                    <p>{{usuario?.bairro}}</p>
+                </div>
+                <div class="col-3">
+                    <label class="font-weight-bold">Cidade</label>
+                    <p>{{usuario?.cidade}}</p>
+                </div>
+                <div class="col-3">
+                    <label class="font-weight-bold">Estado</label>
+                    <p>{{usuario?.uf}}</p>
+                </div>
+            </div>
+        </mat-card-content>
+
+        <mat-card-header>
+            <label class="h4">Contato</label>
+        </mat-card-header>       
+        <mat-card-content class="ml-4 container">
+            <div class="row">
+                <div class="col-6">
+                    <label class="font-weight-bold">Telefone fixo</label>
+                    <p>{{usuario?.telefone}}</p>
+                </div>
+                <div class="col-6">
+                    <label class="font-weight-bold">Telefone celular</label>
+                    <p>{{usuario?.celular}}</p>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

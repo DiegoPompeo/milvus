@@ -8,10 +8,12 @@ import { UserModule } from './user/user.module';
 import { CustomMaterialModule } from './shared/material.module';
 import { NavigationModule } from './navigation/navigation.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgxMaskModule } from 'ngx-mask';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { ToastrModule } from 'ngx-toastr';
 import { ApiEExemplosComponent } from './api-e-exemplos/api-e-exemplos.component';
 import { HttpClientModule } from '@angular/common/http';
+
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [
