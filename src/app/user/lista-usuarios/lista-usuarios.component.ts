@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AtualizarComponent } from '../atualizar/atualizar.component';
 import { DetalheUsuarioComponent } from '../detalhe-usuario/detalhe-usuario.component';
 import { CrudService } from '../service/crud.service';
@@ -33,7 +34,7 @@ export class ListaUsuariosComponent implements OnInit {
     { cols: 1, rows: 1, text: "Adicionar" },
   ];
 
-  constructor(private crudService: CrudService, private router: Router) { }
+  constructor(private crudService: CrudService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -60,7 +61,16 @@ export class ListaUsuariosComponent implements OnInit {
   }
 
   deletarUsuario(id: any){
-    this.crudService.deleteUser(id).subscribe();
+    this.crudService.deleteUser(id).subscribe(
+      data => {
+        if(data){
+          this.toastr.success("Removido com sucesso");
+        } else {
+          this.toastr.error("Erro na remocao do cliente");
+
+        }
+      }
+    );
     this.getUsers();
   }
 
