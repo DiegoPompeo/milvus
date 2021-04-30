@@ -12,8 +12,6 @@ import { ToastrService } from 'ngx-toastr';
 export class CriarComponent implements OnInit {
 
   senha: string;
-
-
   registroFormGroup: FormGroup;
 
   constructor(
@@ -25,9 +23,8 @@ export class CriarComponent implements OnInit {
    }
 
   ngOnInit() {
-
     this.registroFormGroup = this.formBuilder.group({
-      cpf_cnpj: [null, [Validators.required]],
+      cpf: [null, [Validators.required]],
       nome: [null, [Validators.required]],
       cep: [null, [Validators.required]],
       endereco: [null, [Validators.required]],
@@ -46,7 +43,12 @@ export class CriarComponent implements OnInit {
   submit() {
     this.crudService.createUser(this.registroFormGroup.value).subscribe(
       data => {
-        this.toastr.success(data.nome + " cadastrado com sucesso");
+        if (data) {
+          this.toastr.success("Cadastrado com sucesso");
+          this.router.navigateByUrl("/main/listagem");
+        } else {
+          this.toastr.error("Erro na realizacao do cadastro");
+        }
       }
     )
   }

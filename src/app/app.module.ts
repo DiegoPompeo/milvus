@@ -13,7 +13,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { ApiEExemplosComponent } from './api-e-exemplos/api-e-exemplos.component';
 import { HttpClientModule } from '@angular/common/http';
 
-export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
+export const options: Partial<IConfig> = {
+  validation: false,
+};
 
 @NgModule({
   declarations: [
@@ -28,7 +30,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     CustomMaterialModule,
     NavigationModule,
     FontAwesomeModule,
-    NgxMaskModule.forRoot(),
+    NgxMaskModule.forRoot(options),
     ToastrModule.forRoot(),
     HttpClientModule
   ],

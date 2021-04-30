@@ -24,10 +24,10 @@
                         <mat-form-field class="form-field col-6" appearance="outline">
                             <mat-label> CPF/CNPJ
                             </mat-label>
-                            <input matInput formControlName="cpf_cnpj" mask="00.000.000/0000-00 || 000.000.000-00"
+                            <input matInput formControlName="cpf" mask="00.000.000/0000-00 || 000.000.000-00"
                                 required />
-                            <mat-error *ngIf="registroFormGroup.controls.cpf_cnpj.touched">
-                                <span *ngIf="registroFormGroup.controls.cpf_cnpj.errors?.required">
+                            <mat-error *ngIf="registroFormGroup.controls.cpf.touched">
+                                <span *ngIf="registroFormGroup.controls.cpf.errors?.required">
                                     <i class="material-icons" style="font-size: 11px;">warning</i><span> Informe o
                                         CPF/CNPJ.</span>
                                 </span>

@@ -40,21 +40,16 @@ export class DetalheUsuarioComponent implements OnInit {
   getUsuario(): void {
     this.service.getUsers().subscribe(
       data => {
-        this.listaUsuario = data;
-
-        this.listaUsuario.forEach(
-          element => {
-            if (element._id = this.userId) {
-              this.usuario = element;
-            }
-          });
+        this.listaUsuario = data;    
+        for (let i = 0; i < this.listaUsuario.length; i++) {
+          if (this.listaUsuario[i]._id === this.userId) {
+            this.usuario = this.listaUsuario[i];
+          }          
+        }
       }
     );
   }
 
-  detalheUsuario(id: any) {
-    this.router.navigate(['main/listagem/detalhe-usuario', id]);
-  }
 
   editarUsuario(id: any) {
     this.router.navigate(['main/listagem/editar', id]);

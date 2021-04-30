@@ -32,14 +32,13 @@ export class AtualizarComponent implements OnInit {
   getUsuario(): void {
     this.service.getUsers().subscribe(
       data => {
-        this.listaUsuario = data;      
-
-        this.listaUsuario.forEach(element => {
-          if (element._id = this.userId) {
-            this.usuario = element;
-            this.nome = this.usuario.nome;
-          }
-        });
+        this.listaUsuario = data;    
+        for (let i = 0; i < this.listaUsuario.length; i++) {
+          if (this.listaUsuario[i]._id === this.userId) {
+            this.usuario = this.listaUsuario[i];
+            this.nome = this.usuario.nome
+          }          
+        }
       }
     );
   }
@@ -55,9 +54,13 @@ export class AtualizarComponent implements OnInit {
   salvar(usuario: any){
     this.service.updateUser(usuario._id, usuario).subscribe(
       data => {
-        this.toastr.success("Atualizado com sucesso");
+        if (!data) {
+          this.toastr.success("Atualizado com sucesso");
+          this.router.navigateByUrl("/main/listagem");
+        } else {
+          this.toastr.error("Erro na realizacao da atualizacao");
+        }
       }
     )
   }
-
 }
